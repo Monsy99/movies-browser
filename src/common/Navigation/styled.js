@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
-const activeClassName = "link-active";
+const activeclassname = "link-active";
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.basicColor.woodsmoke};
@@ -125,8 +125,8 @@ export const NavigationItem = styled.li`
   flex-grow: 0;
 `;
 
-export const StyledLink = styled(NavLink).attrs(() => ({ activeClassName }))`
-  &.${activeClassName} {
+export const StyledLink = styled(NavLink).attrs(() => ({ activeclassname }))`
+  &.${activeclassname} {
     border: 1px solid ${({ theme }) => theme.navBar.color.white};
     border-radius: 24px;
   }
@@ -141,7 +141,7 @@ export const StyledLink = styled(NavLink).attrs(() => ({ activeClassName }))`
     line-height: 18px;
     padding: 8px 12px;
 
-    &.${activeClassName} {
+    &.${activeclassname} {
       border-radius: 29px;
     }
   }

@@ -1,19 +1,19 @@
 import { useRef } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toMovies, toPeople } from "../../routes";
 
 const SEARCH_DELAY = 500;
 
 export const useOnInputSearchChange = setInputValue => {
-  const timeoutRef = useRef();
-  const history = useHistory();
+  const timeoutRef = useRef<NodeJS.Timeout>();
+  const navigate = useNavigate();
 
   return ({ newValue, atMovies }) => {
     clearTimeout(timeoutRef.current);
     setInputValue(newValue);
 
     timeoutRef.current = setTimeout(() => {
-      history.push({
+      navigate({
         pathname: atMovies ? toMovies() : toPeople(),
         search: newValue ? `search=${newValue}` : "",
       });

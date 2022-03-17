@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { HashRouter, Redirect, Route, Switch } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { toMovie, toMovies, toPeople, toPerson } from "./routes";
 import { ThemeProvider } from "styled-components";
 import { theme, darkTheme } from "./theme";
@@ -8,8 +8,8 @@ import MoviePage from "./features/movies/MoviePage";
 import MoviesPage from "./features/movies/MoviesPage";
 import PersonPage from "./features/people/PersonPage";
 import PeoplePage from "./features/people/PeoplePage";
-import Navigation from "./common/Navigation/";
-import ScrollArrow from "./common/ScrollArrow/";
+import Navigation from "./common/Navigation";
+import ScrollArrow from "./common/ScrollArrow";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsDark } from "./themeSlice";
 import { fetchGenres } from "./features/genres/genresSlice";
@@ -29,23 +29,13 @@ const App = () => {
         <GlobalStyle />
         <Navigation />
         <ScrollArrow />
-        <Switch>
-          <Route path={toMovie()}>
-            <MoviePage />
-          </Route>
-          <Route path={toMovies()}>
-            <MoviesPage />
-          </Route>
-          <Route path={toPerson()}>
-            <PersonPage />
-          </Route>
-          <Route path={toPeople()}>
-            <PeoplePage />
-          </Route>
-          <Route>
-            <Redirect to={toMovies()} />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path={toMovie()} element={<MoviePage />} />
+          <Route path={toMovies()} element={<MoviesPage />} />
+          <Route path={toPerson()} element={<PersonPage />} />
+          <Route path={toPeople()} element={<PeoplePage />} />
+          <Route path='/' element={<Navigate to={toMovies()} />} />
+        </Routes>
       </ThemeProvider>
     </HashRouter>
   );
