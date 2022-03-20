@@ -1,30 +1,30 @@
-import React, { useEffect } from "react";
-import Wrapper from "../../../common/Wrapper";
-import Header from "../../../common/Header";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Wrapper from '../../../common/Wrapper';
+import Header from '../../../common/Header';
 import {
   fetchPeople,
   selectError,
   selectLoading,
   selectPeople,
   selectTotalNumberOfPeople,
-} from "../peopleSlice";
-import PeopleContainer from "../PeopleContainer";
-import Loader from "../../../common/Loader";
-import { useQueryParameter } from "../../search/queryParameters";
-import searchQueryParamName from "../../searchQueryParamName";
-import { Pager } from "../../../common/Pager";
-import NoResults from "../../../common/NoResults";
-import pageQueryParamName from "../../pageQueryParamName";
-import Error from "../../../common/Error/index";
-import { selectLanguage } from "../../../common/Navigation/LanguageSelect/languageSlice";
+} from '../peopleSlice';
+import PeopleContainer from '../PeopleContainer';
+import Loader from '../../../common/Loader';
+import { useQueryParameter } from '../../search/queryParameters';
+import searchQueryParamName from '../../searchQueryParamName';
+import { Pager } from '../../../common/Pager';
+import NoResults from '../../../common/NoResults';
+import pageQueryParamName from '../../pageQueryParamName';
+import Error from '../../../common/Error/index';
+import { selectLanguage } from '../../../common/Navigation/LanguageSelect/languageSlice';
 import {
   noResults,
   popularPeople,
   searchResultsFor,
-} from "../../../common/languages";
+} from '../../../common/languages';
 
-const PeoplePage = () => {
+function PeoplePage() {
   const query = useQueryParameter(searchQueryParamName);
   const dispatch = useDispatch();
   const people = useSelector(selectPeople);
@@ -62,7 +62,9 @@ const PeoplePage = () => {
         ) : (
           <>
             <Header>
-              {noResults[language]} <q>{query}</q>
+              {noResults[language]}
+              {' '}
+              <q>{query}</q>
             </Header>
             <NoResults />
           </>
@@ -72,5 +74,5 @@ const PeoplePage = () => {
       )}
     </Wrapper>
   );
-};
+}
 export default PeoplePage;

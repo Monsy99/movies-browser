@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import Search from "../../features/search";
-import camera from "../../images/camera.svg";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Search from '../../features/search';
+import camera from '../../images/camera.svg';
 import {
   Container,
   NavigationStyle,
@@ -17,19 +18,18 @@ import {
   Desktop,
   MobileNavigationList,
   LogoLink,
-} from "./styled";
-import { toMovies, toPeople } from "../../routes";
-import Wrapper from "../Wrapper";
-import LanguageSelect from "./LanguageSelect";
-import { useDispatch, useSelector } from "react-redux";
-import { selectLanguage } from "./LanguageSelect/languageSlice";
-import { moviesNavigation, peopleNavigation } from "../../common/languages";
-import { selectIsDark, toggleTheme } from "../../themeSlice";
-import sun from "../../images/sun.svg";
-import moon from "../../images/moon.svg";
-import Burger from "./Burger";
+} from './styled';
+import { toMovies, toPeople } from '../../routes';
+import Wrapper from '../Wrapper';
+import LanguageSelect from './LanguageSelect';
+import { selectLanguage } from './LanguageSelect/languageSlice';
+import { moviesNavigation, peopleNavigation } from '../languages';
+import { selectIsDark, toggleTheme } from '../../themeSlice';
+import sun from '../../images/sun.svg';
+import moon from '../../images/moon.svg';
+import Burger from './Burger';
 
-const Navigation = () => {
+function Navigation() {
   const [open, setOpen] = useState(false);
   const language = useSelector(selectLanguage);
   const dispatch = useDispatch();
@@ -97,6 +97,6 @@ const Navigation = () => {
       </Wrapper>
     </Container>
   );
-};
+}
 
 export default Navigation;

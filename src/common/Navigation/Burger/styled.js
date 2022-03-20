@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledBurger = styled.button`
   display: flex;
@@ -26,18 +26,16 @@ export const StyledBurger = styled.button`
     transform-origin: 1px;
 
     :first-child {
-      transform: ${({ open }) =>
-        open ? "rotate(45deg) translateY(0.05rem)" : "rotate(0)"};
+      transform: ${({ open }) => (open ? 'rotate(45deg) translateY(0.05rem)' : 'rotate(0)')};
     }
 
     :nth-child(2) {
-      opacity: ${({ open }) => (open ? "0" : "1")};
-      transform: ${({ open }) => (open ? "translateX(20px)" : "translateX(0)")};
+      opacity: ${({ open }) => (open ? '0' : '1')};
+      transform: ${({ open }) => (open ? 'translateX(20px)' : 'translateX(0)')};
     }
 
     :nth-child(3) {
-      transform: ${({ open }) =>
-        open ? "rotate(-45deg) translateY(-0.05rem)" : "rotate(0)"};
+      transform: ${({ open }) => (open ? 'rotate(-45deg) translateY(-0.05rem)' : 'rotate(0)')};
     }
   }
 `;

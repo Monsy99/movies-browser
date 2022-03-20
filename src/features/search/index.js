@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
-import searchIcon from "../../images/searchIcon.svg";
-import { Label, Icon, Input } from "./styled";
-import { useQueryParameter } from "./queryParameters";
-import { useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectLanguage } from "../../common/Navigation/LanguageSelect/languageSlice";
-import { searchFor, movies, people } from "../../common/languages";
-import { useOnInputSearchChange } from "./useOnInputSearchChange";
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import searchIcon from '../../images/searchIcon.svg';
+import { Label, Icon, Input } from './styled';
+import { useQueryParameter } from './queryParameters';
+import { selectLanguage } from '../../common/Navigation/LanguageSelect/languageSlice';
+import { searchFor, movies, people } from '../../common/languages';
+import { useOnInputSearchChange } from './useOnInputSearchChange';
 
-const Search = ({ mobile }) => {
+function Search({ mobile }) {
   const location = useLocation();
-  const searchQueryParamName = "search";
-  const query = useQueryParameter(searchQueryParamName) || "";
+  const searchQueryParamName = 'search';
+  const query = useQueryParameter(searchQueryParamName) || '';
   const [inputValue, setInputValue] = useState(query);
-  const atMovies = location.pathname.includes("movies");
+  const atMovies = location.pathname.includes('movies');
   const language = useSelector(selectLanguage);
 
   useEffect(() => {
@@ -32,6 +32,6 @@ const Search = ({ mobile }) => {
       />
     </Label>
   );
-};
+}
 
 export default Search;

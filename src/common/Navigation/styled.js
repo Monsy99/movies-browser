@@ -1,6 +1,7 @@
-import styled from "styled-components";
-import { Link, NavLink } from "react-router-dom";
-const activeclassname = "link-active";
+import styled from 'styled-components';
+import { Link, NavLink } from 'react-router-dom';
+
+const activeclassname = 'link-active';
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.basicColor.woodsmoke};
@@ -76,8 +77,7 @@ export const ToggleButton = styled.button`
 export const SunIcon = styled(Icon)`
   transition: all 0.3s linear;
   height: 30px;
-  transform: ${({ isDark }) =>
-    isDark ? "translateX(-100px)" : "translateX(0)"};
+  transform: ${({ isDark }) => (isDark ? 'translateX(-100px)' : 'translateX(0)')};
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
     height: 25px;
   }
@@ -86,8 +86,7 @@ export const SunIcon = styled(Icon)`
 export const MoonIcon = styled(Icon)`
   transition: all 0.3s linear;
   height: 30px;
-  transform: ${({ isDark }) =>
-    isDark ? "translateX(0px)" : "translateX(100px)"};
+  transform: ${({ isDark }) => (isDark ? 'translateX(0px)' : 'translateX(100px)')};
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
     height: 25px;
   }

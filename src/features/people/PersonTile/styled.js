@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Tile from "../../../common/Tile";
+import styled from 'styled-components';
+import Tile from '../../../common/Tile';
 
 export const StyledPersonTile = styled(Tile)`
   grid-gap: 12px;

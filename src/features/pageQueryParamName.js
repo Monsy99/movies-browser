@@ -1,2 +1,2 @@
-const pageQueryParamName = "page";
+const pageQueryParamName = 'page';
 export default pageQueryParamName;

@@ -1,14 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const peopleSlice = createSlice({
-  name: "people",
+  name: 'people',
   initialState: {
     loading: true,
     people: [],
     person: null,
     allPages: 1,
     totalNumberOfPeople: 0,
-    error:false,
+    error: false,
   },
   reducers: {
     fetchPeople: (state) => {
@@ -42,13 +42,13 @@ const peopleSlice = createSlice({
   },
 });
 
-export const selectPeopleState = state => state.people;
-export const selectLoading = state => selectPeopleState(state).loading;
-export const selectPeople = state => selectPeopleState(state).people;
-export const selectPerson = state => selectPeopleState(state).person;
-export const selectPeopleAllPages = state => selectPeopleState(state).allPages;
-export const selectTotalNumberOfPeople = state => selectPeopleState(state).totalNumberOfPeople;
-export const selectError = state => selectPeopleState(state).error;
+export const selectPeopleState = (state) => state.people;
+export const selectLoading = (state) => selectPeopleState(state).loading;
+export const selectPeople = (state) => selectPeopleState(state).people;
+export const selectPerson = (state) => selectPeopleState(state).person;
+export const selectPeopleAllPages = (state) => selectPeopleState(state).allPages;
+export const selectTotalNumberOfPeople = (state) => selectPeopleState(state).totalNumberOfPeople;
+export const selectError = (state) => selectPeopleState(state).error;
 
 export const {
   fetchPeople,

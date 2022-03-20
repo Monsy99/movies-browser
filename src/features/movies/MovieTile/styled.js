@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const MovieTileImg = styled.div`
   padding-top: calc(100% * 632 / 421);

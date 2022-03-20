@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import { useSelector } from 'react-redux';
 import {
   DetailsTile,
   Image,
@@ -17,15 +18,14 @@ import {
   MovieRatingVotes,
   Rating,
   DesktopMovieRatingVotes,
-} from "./styled";
-import star from "../../MovieTile/ratingStar.svg";
-import poster from "../../../../images/Poster.svg";
-import ReadMoreButton from "../../../../common/ReadMoreButton";
-import { production, releaseDate, votes } from "../../../../common/languages";
-import { useSelector } from "react-redux";
-import { selectLanguage } from "../../../../common/Navigation/LanguageSelect/languageSlice";
+} from './styled';
+import star from '../../MovieTile/ratingStar.svg';
+import poster from '../../../../images/Poster.svg';
+import ReadMoreButton from '../../../../common/ReadMoreButton';
+import { production, releaseDate, votes } from '../../../../common/languages';
+import { selectLanguage } from '../../../../common/Navigation/LanguageSelect/languageSlice';
 
-const MovieDetailsTile = ({ movie }) => {
+function MovieDetailsTile({ movie }) {
   const language = useSelector(selectLanguage);
 
   return (
@@ -33,34 +33,51 @@ const MovieDetailsTile = ({ movie }) => {
       <Image src={movie.poster_path ? `https://image.tmdb.org/t/p/w342${movie.poster_path}` : poster} alt="" />
       <section>
         <Title>{movie.original_title}</Title>
-        {movie.release_date &&
-          <ProductionYear>{movie.release_date.slice(0, 4)}</ProductionYear>
-        }
+        {movie.release_date
+          && <ProductionYear>{movie.release_date.slice(0, 4)}</ProductionYear>}
         <ProductionAndRelease>
-          {movie.production_countries &&
+          {movie.production_countries
+            && (
             <Frame>
-              <DesktopGrayText>{production[language]}:</DesktopGrayText>
-              <Text>{movie.production_countries.map(country => country.name).join(", ")}</Text>
+              <DesktopGrayText>
+                {production[language]}
+                :
+              </DesktopGrayText>
+              <Text>{movie.production_countries.map((country) => country.name).join(', ')}</Text>
             </Frame>
-          }
-          {movie.release_date &&
+            )}
+          {movie.release_date
+            && (
             <Frame>
-              <DesktopGrayText>{releaseDate[language]}:</DesktopGrayText>
-              <Text>{movie.release_date.slice(8, 10)}.{movie.release_date.slice(5, 7)}.{movie.release_date.slice(0, 4)}</Text>
+              <DesktopGrayText>
+                {releaseDate[language]}
+                :
+              </DesktopGrayText>
+              <Text>
+                {movie.release_date.slice(8, 10)}
+                .
+                {movie.release_date.slice(5, 7)}
+                .
+                {movie.release_date.slice(0, 4)}
+              </Text>
             </Frame>
-          }
+            )}
         </ProductionAndRelease>
-        {movie.genres &&
+        {movie.genres
+          && (
           <Tags>
-            {movie.genres.map(genre =>
-              <Tag key={genre.id}>{genre.name}</Tag>)}
+            {movie.genres.map((genre) => <Tag key={genre.id}>{genre.name}</Tag>)}
           </Tags>
-        }
+          )}
         <Rating>
-          <MovieRatingImg src={star}></MovieRatingImg>
+          <MovieRatingImg src={star} />
           <MovieRatingText>{movie.vote_average.toFixed(1)}</MovieRatingText>
           <DesktopMovieRatingVotes>/ 10</DesktopMovieRatingVotes>
-          <MovieRatingVotes>{movie.vote_count} {votes[language]}</MovieRatingVotes>
+          <MovieRatingVotes>
+            {movie.vote_count}
+            {' '}
+            {votes[language]}
+          </MovieRatingVotes>
         </Rating>
         <DesktopDescription>
           <ReadMoreButton content={movie.overview} />

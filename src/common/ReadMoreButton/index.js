@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { Button } from "./styled";
-import { selectLanguage } from "../../common/Navigation/LanguageSelect/languageSlice";
-import { readLess, readMore } from "../../common/languages";
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Button } from './styled';
+import { selectLanguage } from '../Navigation/LanguageSelect/languageSlice';
+import { readLess, readMore } from '../languages';
 
-const ReadMoreButton = ({ content }) => {
+function ReadMoreButton({ content }) {
   const [show, setShow] = useState(false);
   const language = useSelector(selectLanguage);
 
@@ -18,5 +18,5 @@ const ReadMoreButton = ({ content }) => {
   ) : (
     <>{content}</>
   );
-};
+}
 export default ReadMoreButton;

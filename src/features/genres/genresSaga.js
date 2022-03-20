@@ -1,7 +1,7 @@
-import { takeLatest, call, put } from "redux-saga/effects";
-import { getGenres } from "../movies/api";
+import { takeLatest, call, put } from 'redux-saga/effects';
+import { getGenres } from '../movies/api';
 
-import { fetchGenres, fetchGenresSuccess } from "./genresSlice";
+import { fetchGenres, fetchGenresSuccess } from './genresSlice';
 
 function* fetchGenresHandler(payload) {
   try {

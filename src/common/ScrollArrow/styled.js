@@ -1,5 +1,5 @@
-import { FaArrowCircleUp } from "react-icons/fa";
-import styled, { css } from "styled-components";
+import { FaArrowCircleUp } from 'react-icons/fa';
+import styled, { css } from 'styled-components';
 
 export const Arrow = styled(FaArrowCircleUp)`
   position: fixed; 

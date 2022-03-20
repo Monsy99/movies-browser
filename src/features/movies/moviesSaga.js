@@ -1,5 +1,5 @@
-import { takeLatest, call, put } from "redux-saga/effects";
-import { getMovieCredits, getMovieDetails, getMovies } from "./api";
+import { takeLatest, call, put } from 'redux-saga/effects';
+import { getMovieCredits, getMovieDetails, getMovies } from './api';
 
 import {
   fetchMovies,
@@ -7,7 +7,7 @@ import {
   fetchMovie,
   fetchMovieSuccess,
   fetchError,
-} from "./moviesSlice";
+} from './moviesSlice';
 
 function* fetchMoviesHandler({ payload }) {
   try {
@@ -18,7 +18,7 @@ function* fetchMoviesHandler({ payload }) {
         movies,
         totalPages: data.total_pages,
         totalResults: data.total_results,
-      })
+      }),
     );
   } catch (error) {
     yield put(fetchError());

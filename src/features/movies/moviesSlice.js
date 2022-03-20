@@ -1,14 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const moviesSlice = createSlice({
-  name: "movies",
+  name: 'movies',
   initialState: {
     loading: true,
     movies: [],
     movie: null,
     allPages: 1,
     totalNumberOfMovies: 0,
-    error:false,
+    error: false,
   },
   reducers: {
     fetchMovies: (state) => {

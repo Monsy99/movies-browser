@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import {
   fetchMovie,
   selectError,
   selectLoading,
   selectMovie,
-} from "../moviesSlice";
+} from '../moviesSlice';
 import {
   MovieBackdrop,
   MainInfo,
@@ -16,18 +16,18 @@ import {
   MovieRating,
   MovieRatingNote,
   MovieRatingTextVote,
-} from "./styled";
-import star from "../MovieTile/ratingStar.svg";
-import Wrapper from "../../../common/Wrapper";
-import MovieDetailsTile from "./MovieDetailsTile";
-import PeopleContainer from "../../people/PeopleContainer";
-import Header from "../../../common/Header";
-import Loader from "../../../common/Loader";
-import Error from "../../../common/Error/index";
-import { selectLanguage } from "../../../common/Navigation/LanguageSelect/languageSlice";
-import { cast, crew, votes } from "../../../common/languages";
+} from './styled';
+import star from '../MovieTile/ratingStar.svg';
+import Wrapper from '../../../common/Wrapper';
+import MovieDetailsTile from './MovieDetailsTile';
+import PeopleContainer from '../../people/PeopleContainer';
+import Header from '../../../common/Header';
+import Loader from '../../../common/Loader';
+import Error from '../../../common/Error/index';
+import { selectLanguage } from '../../../common/Navigation/LanguageSelect/languageSlice';
+import { cast, crew, votes } from '../../../common/languages';
 
-const MoviePage = () => {
+function MoviePage() {
   const { id } = useParams();
   const movie = useSelector(selectMovie);
   const loading = useSelector(selectLoading);
@@ -58,11 +58,13 @@ const MoviePage = () => {
           <MainInfo>
             <MovieLongTitle>{movie.title}</MovieLongTitle>
             <MovieRating>
-              <MovieRatingImg src={star}></MovieRatingImg>
+              <MovieRatingImg src={star} />
               <MovieRatingNote>{movie.vote_average.toFixed(1)}</MovieRatingNote>
               <MovieRatingText>/ 10</MovieRatingText>
               <MovieRatingTextVote>
-                {movie.vote_count} {votes[language]}
+                {movie.vote_count}
+                {' '}
+                {votes[language]}
               </MovieRatingTextVote>
             </MovieRating>
           </MainInfo>
@@ -78,8 +80,8 @@ const MoviePage = () => {
     </>
   ) : (
     <Wrapper>
-      <Loader></Loader>
+      <Loader />
     </Wrapper>
   );
-};
+}
 export default MoviePage;

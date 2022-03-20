@@ -1,8 +1,10 @@
-import React from "react"
-import Prev from "./images/Prev.svg"
-import DisabledPrev from "./images/DisabledPrev.svg"
-import Next from "./images/Next.svg"
-import DisabledNext from "./images/DisabledNext.svg"
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import Prev from './images/Prev.svg';
+import DisabledPrev from './images/DisabledPrev.svg';
+import Next from './images/Next.svg';
+import DisabledNext from './images/DisabledNext.svg';
 import {
   PagerButton,
   PagerNext,
@@ -12,20 +14,20 @@ import {
   PagerWrapper,
   Bold,
   MobilePagerPrev,
-  MobilePagerNext
-} from "./styled"
-import { useSelector } from "react-redux";
-import { selectAllMoviesPages } from "../../features/movies/moviesSlice";
-import { selectPeopleAllPages } from "../../features/people/peopleSlice";
-import { useLocation } from "react-router-dom";
-import { useQueryParameter, useReplaceQueryParameter } from "../../features/search/queryParameters";
-import pageParam from "../../features/pageQueryParamName";
-import { selectLanguage } from "../Navigation/LanguageSelect/languageSlice";
-import { first, previous, page, ofPage, next, last } from "../../common/languages"
+  MobilePagerNext,
+} from './styled';
+import { selectAllMoviesPages } from '../../features/movies/moviesSlice';
+import { selectPeopleAllPages } from '../../features/people/peopleSlice';
+import { useQueryParameter, useReplaceQueryParameter } from '../../features/search/queryParameters';
+import pageParam from '../../features/pageQueryParamName';
+import { selectLanguage } from '../Navigation/LanguageSelect/languageSlice';
+import {
+  first, previous, page, ofPage, next, last,
+} from '../languages';
 
-export const Pager = () => {
+export function Pager() {
   const location = useLocation();
-  const atMovies = location.pathname.includes("movies") ? true : false;
+  const atMovies = !!location.pathname.includes('movies');
   const currentPage = +useQueryParameter(pageParam) || 1;
   const allMoviesPages = useSelector(selectAllMoviesPages);
   const allPeoplePages = useSelector(selectPeopleAllPages);
@@ -36,17 +38,17 @@ export const Pager = () => {
   const language = useSelector(selectLanguage);
 
   const onFirstButtonClick = () => {
-    replaceQueryParam({ key: pageParam, value: 1 })
-  }
+    replaceQueryParam({ key: pageParam, value: 1 });
+  };
   const onPreviousButtonClick = () => {
     replaceQueryParam({ key: pageParam, value: +currentPage - 1 });
-  }
+  };
   const onNextButtonClick = () => {
     replaceQueryParam({ key: pageParam, value: +currentPage + 1 });
-  }
+  };
   const onLastButtonClick = () => {
     replaceQueryParam({ key: pageParam, value: allPages });
-  }
+  };
 
   return (
     <PagerWrapper>
@@ -66,8 +68,18 @@ export const Pager = () => {
         <PagerText>{previous[language]}</PagerText>
       </PagerButton>
       <PagerInfo>
-        {page[language]}<Bold> {currentPage} </Bold>
-        {ofPage[language]}<Bold> {allPages} </Bold>
+        {page[language]}
+        <Bold>
+          {' '}
+          {currentPage}
+          {' '}
+        </Bold>
+        {ofPage[language]}
+        <Bold>
+          {' '}
+          {allPages}
+          {' '}
+        </Bold>
       </PagerInfo>
       <PagerButton
         onClick={onNextButtonClick}
@@ -84,5 +96,6 @@ export const Pager = () => {
         <MobilePagerNext src={disableNext ? DisabledNext : Next} />
         <PagerNext src={disableNext ? DisabledNext : Next} />
       </PagerButton>
-    </PagerWrapper>)
+    </PagerWrapper>
+  );
 }

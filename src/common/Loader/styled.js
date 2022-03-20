@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const LoadingContainer = styled.div`
 width: 100%;
@@ -6,7 +6,7 @@ margin-top: 120px;
 display: flex;
 justify-content: center;
 align-items: center;
-@media(max-width:${({theme})=>theme.breakpoint.mobileMax}px)
+@media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px)
 {
     margin-top:24px;
 }
