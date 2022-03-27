@@ -13,7 +13,7 @@ import PeopleContainer from '../PeopleContainer';
 import Loader from '../../../common/Loader';
 import { useQueryParameter } from '../../search/queryParameters';
 import searchQueryParamName from '../../searchQueryParamName';
-import { Pager } from '../../../common/Pager';
+import Pager from '../../../common/Pager';
 import NoResults from '../../../common/NoResults';
 import pageQueryParamName from '../../pageQueryParamName';
 import Error from '../../../common/Error/index';
@@ -45,32 +45,31 @@ function PeoplePage() {
       </Wrapper>
     );
   }
+  if (loading) {
+    <Wrapper>
+      <Loader />
+    </Wrapper>;
+  }
 
   return (
     <Wrapper>
-      {!loading ? (
-        people.length ? (
-          <>
-            <Header>
-              {query
-                ? `${searchResultsFor[language]} "${query}" (${totalNumberOfPeople})`
-                : popularPeople[language]}
-            </Header>
-            <PeopleContainer people={people} />
-            <Pager />
-          </>
-        ) : (
-          <>
-            <Header>
-              {noResults[language]}
-              {' '}
-              <q>{query}</q>
-            </Header>
-            <NoResults />
-          </>
-        )
+      {people.length ? (
+        <>
+          <Header>
+            {query
+              ? `${searchResultsFor[language]} "${query}" (${totalNumberOfPeople})`
+              : popularPeople[language]}
+          </Header>
+          <PeopleContainer people={people} />
+          <Pager />
+        </>
       ) : (
-        <Loader />
+        <>
+          <Header>
+            {noResults[language]} <q>{query}</q>
+          </Header>
+          <NoResults />
+        </>
       )}
     </Wrapper>
   );

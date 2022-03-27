@@ -35,7 +35,9 @@ function* fetchMovieHandler({ payload }) {
   }
 }
 
-export function* watchFetchPopularMovies() {
+function* watchFetchPopularMovies() {
   yield takeLatest(fetchMovies.type, fetchMoviesHandler);
   yield takeLatest(fetchMovie.type, fetchMovieHandler);
 }
+
+export default watchFetchPopularMovies;

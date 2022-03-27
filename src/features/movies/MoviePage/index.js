@@ -1,3 +1,4 @@
+import Wrapper from '@common/Wrapper';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -18,7 +19,6 @@ import {
   MovieRatingTextVote,
 } from './styled';
 import star from '../MovieTile/ratingStar.svg';
-import Wrapper from '../../../common/Wrapper';
 import MovieDetailsTile from './MovieDetailsTile';
 import PeopleContainer from '../../people/PeopleContainer';
 import Header from '../../../common/Header';
@@ -62,9 +62,7 @@ function MoviePage() {
               <MovieRatingNote>{movie.vote_average.toFixed(1)}</MovieRatingNote>
               <MovieRatingText>/ 10</MovieRatingText>
               <MovieRatingTextVote>
-                {movie.vote_count}
-                {' '}
-                {votes[language]}
+                {movie.vote_count} {votes[language]}
               </MovieRatingTextVote>
             </MovieRating>
           </MainInfo>

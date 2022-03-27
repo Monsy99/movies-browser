@@ -1,12 +1,8 @@
 import React, { useEffect } from 'react';
-import {
-  HashRouter, Navigate, Route, Routes,
-} from 'react-router-dom';
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  toMovie, toMovies, toPeople, toPerson,
-} from './routes';
+import { toMovie, toMovies, toPeople, toPerson } from './routes';
 import { theme, darkTheme } from './theme';
 import { GlobalStyle } from './GlobalStyle';
 import MoviePage from './features/movies/MoviePage';
@@ -34,9 +30,9 @@ function App() {
         <Navigation />
         <ScrollArrow />
         <Routes>
-          <Route path={toMovie()} element={<MoviePage />} />
+          <Route path={toMovie({})} element={<MoviePage />} />
           <Route path={toMovies()} element={<MoviesPage />} />
-          <Route path={toPerson()} element={<PersonPage />} />
+          <Route path={toPerson({})} element={<PersonPage />} />
           <Route path={toPeople()} element={<PeoplePage />} />
           <Route path="/" element={<Navigate to={toMovies()} />} />
         </Routes>

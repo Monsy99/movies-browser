@@ -12,6 +12,8 @@ function* fetchGenresHandler(payload) {
   }
 }
 
-export function* watchFetchGenres() {
+function* watchFetchGenres() {
   yield takeLatest(fetchGenres.type, fetchGenresHandler);
 }
+
+export default watchFetchGenres;

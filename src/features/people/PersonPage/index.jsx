@@ -10,7 +10,7 @@ import {
 import Wrapper from '../../../common/Wrapper';
 import Header from '../../../common/Header';
 import PersonDetailsTile from './PersonDetailsTile';
-import { MoviesContainer } from '../../movies/MoviesContainer';
+import MoviesContainer from '../../movies/MoviesContainer';
 import Loader from '../../../common/Loader';
 import Error from '../../../common/Error/index';
 import { selectLanguage } from '../../../common/Navigation/LanguageSelect/languageSlice';
@@ -30,7 +30,8 @@ function PersonPage() {
     }
   }, [dispatch, id, language]);
 
-  const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
+  const capitalizeFirstLetter = (string) =>
+    string.charAt(0).toUpperCase() + string.slice(1);
 
   if (error) {
     return (
@@ -44,27 +45,13 @@ function PersonPage() {
     <Wrapper>
       <PersonDetailsTile person={person} />
       <Header>
-        {capitalizeFirstLetter(moviesNavigation[language])}
-        {' '}
-        -
-        {' '}
-        {cast[language].toLowerCase()}
-        {' '}
-        (
-        {person.cast.length}
-        )
+        {capitalizeFirstLetter(moviesNavigation[language])}- &nbsp;
+        {cast[language].toLowerCase()} ({person.cast.length})
       </Header>
       <MoviesContainer movies={person.cast.slice(0, 20)} />
       <Header>
-        {capitalizeFirstLetter(moviesNavigation[language])}
-        {' '}
-        -
-        {' '}
-        {crew[language].toLowerCase()}
-        {' '}
-        (
-        {person.crew.length}
-        )
+        {capitalizeFirstLetter(moviesNavigation[language])} -&nbsp;
+        {crew[language].toLowerCase()} ({person.crew.length})
       </Header>
       <MoviesContainer movies={person.crew.slice(0, 20)} />
     </Wrapper>

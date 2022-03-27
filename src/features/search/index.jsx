@@ -6,7 +6,7 @@ import { Label, Icon, Input } from './styled';
 import { useQueryParameter } from './queryParameters';
 import { selectLanguage } from '../../common/Navigation/LanguageSelect/languageSlice';
 import { searchFor, movies, people } from '../../common/languages';
-import { useOnInputSearchChange } from './useOnInputSearchChange';
+import useOnInputSearchChange from './useOnInputSearchChange';
 
 function Search({ mobile }) {
   const location = useLocation();
@@ -27,8 +27,12 @@ function Search({ mobile }) {
       <Icon src={searchIcon} />
       <Input
         value={inputValue}
-        placeholder={`${searchFor[language]} ${atMovies ? movies[language] : people[language]}…`}
-        onChange={({ target: { value } }) => onInputChange({ newValue: value, atMovies })}
+        placeholder={`${searchFor[language]} ${
+          atMovies ? movies[language] : people[language]
+        }…`}
+        onChange={({ target: { value } }) =>
+          onInputChange({ newValue: value, atMovies })
+        }
       />
     </Label>
   );

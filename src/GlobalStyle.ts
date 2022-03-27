@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
+import { ThemeType } from './theme';
 
-export const GlobalStyle = createGlobalStyle`
+// eslint-disable-next-line import/prefer-default-export
+export const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
     html {
         box-sizing: border-box;
     }

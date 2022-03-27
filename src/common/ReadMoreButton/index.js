@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Button } from './styled';
+import Button from './styled';
 import { selectLanguage } from '../Navigation/LanguageSelect/languageSlice';
 import { readLess, readMore } from '../languages';
 
@@ -11,12 +11,12 @@ function ReadMoreButton({ content }) {
   return content.length > 400 ? (
     <>
       {show ? content : `${content.slice(0, 400)}...`}
-      <Button onClick={() => setShow((show) => !show)}>
+      <Button onClick={() => setShow((val) => !val)}>
         {show ? readLess[language] : readMore[language]}
       </Button>
     </>
   ) : (
-    <>{content}</>
+    content
   );
 }
 export default ReadMoreButton;

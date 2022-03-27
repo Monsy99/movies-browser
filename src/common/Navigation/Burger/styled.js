@@ -1,6 +1,8 @@
+/* eslint-disable indent */
+/* eslint-disable no-confusing-arrow */
 import styled from 'styled-components';
 
-export const StyledBurger = styled.button`
+export default styled.button`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -26,7 +28,8 @@ export const StyledBurger = styled.button`
     transform-origin: 1px;
 
     :first-child {
-      transform: ${({ open }) => (open ? 'rotate(45deg) translateY(0.05rem)' : 'rotate(0)')};
+      transform: ${({ open }) =>
+        open ? 'rotate(45deg) translateY(0.05rem)' : 'rotate(0)'};
     }
 
     :nth-child(2) {
@@ -35,7 +38,8 @@ export const StyledBurger = styled.button`
     }
 
     :nth-child(3) {
-      transform: ${({ open }) => (open ? 'rotate(-45deg) translateY(-0.05rem)' : 'rotate(0)')};
+      transform: ${({ open }) =>
+        open ? 'rotate(-45deg) translateY(-0.05rem)' : 'rotate(0)'};
     }
   }
 `;

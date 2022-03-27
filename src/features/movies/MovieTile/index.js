@@ -20,15 +20,16 @@ import { toMovie } from '../../../routes';
 import { votes } from '../../../common/languages';
 import { selectLanguage } from '../../../common/Navigation/LanguageSelect/languageSlice';
 import { selectGenres } from '../../genres/genresSlice';
-import { getGenreName } from '../../genres/getGenreName';
+import getGenreName from '../../genres/getGenreName';
 
 const generateTags = (tagIds, genres) => {
   if (tagIds && genres) {
     const tags = tagIds.map((tagId) => getGenreName(tagId, genres));
-    return tags
-      ? tags.map((tag, index) => <MovieTileTag key={index}>{tag}</MovieTileTag>)
-      : '';
+    return tags.map((tag) => (
+      <MovieTileTag key={`${tag.id}`}>{tag}</MovieTileTag>
+    ));
   }
+  return null;
 };
 
 function MovieTile({ movie }) {
@@ -46,17 +47,7 @@ function MovieTile({ movie }) {
       <MovieInfoWrapper>
         <MovieTileHeader>{movie.title}</MovieTileHeader>
         <MovieTileYear>
-          {movie.character
-            ? `${movie.character} (${
-              movie.release_date ? movie.release_date.slice(0, 4) : '????'
-            })`
-            : movie.job
-              ? `${movie.job} (${
-                movie.release_date ? movie.release_date.slice(0, 4) : '????'
-              })`
-              : movie.release_date
-                ? movie.release_date.slice(0, 4)
-                : '????'}
+          {movie.release_date ? movie.release_date.slice(0, 4) : '????'}
         </MovieTileYear>
         <MovieTileTags>{generateTags(movie.genre_ids, genres)}</MovieTileTags>
         <MovieAdditionalInfo>
@@ -64,7 +55,6 @@ function MovieTile({ movie }) {
           <MovieRatingText>{movie.vote_average.toFixed(1)}</MovieRatingText>
           <MovieRatingVotes>
             {movie.vote_count}
-            {' '}
             {votes[language]}
           </MovieRatingVotes>
         </MovieAdditionalInfo>

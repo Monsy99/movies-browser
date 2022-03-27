@@ -15,9 +15,9 @@ function LanguageSelect({ handleClose, mobile }) {
   return (
     <SelectContainer mobile={mobile}>
       <Select value={language} onChange={handleChange}>
-        {languages.map((language) => (
-          <option value={language.code} key={language.code}>
-            {language.label}
+        {languages.map((lang) => (
+          <option value={lang.code} key={lang.code}>
+            {lang.label}
           </option>
         ))}
       </Select>

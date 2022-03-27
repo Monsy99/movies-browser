@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled, ThemeType } from '@/theme';
 
 export const ErrorContainer = styled.div`
   display: flex;
@@ -30,11 +30,11 @@ export const ErrorText = styled.p`
   line-height: 130%;
 `;
 
-export const ReturnButton = styled.button`
+export const ReturnButton = styled.button<{ theme: ThemeType }>`
   border: none;
   border-radius: 5px;
   padding: 16px 24px;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 14px;

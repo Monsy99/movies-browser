@@ -36,7 +36,8 @@ function* fetchPersonHandler({ payload }) {
   }
 }
 
-export function* watchFetchPeople() {
+function* watchFetchPeople() {
   yield takeLatest(fetchPeople.type, fetchPeopleHandler);
   yield takeLatest(fetchPerson.type, fetchPersonHandler);
 }
+export default watchFetchPeople;

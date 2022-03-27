@@ -18,14 +18,15 @@ import {
 } from './styled';
 import { selectAllMoviesPages } from '../../features/movies/moviesSlice';
 import { selectPeopleAllPages } from '../../features/people/peopleSlice';
-import { useQueryParameter, useReplaceQueryParameter } from '../../features/search/queryParameters';
+import {
+  useQueryParameter,
+  useReplaceQueryParameter,
+} from '../../features/search/queryParameters';
 import pageParam from '../../features/pageQueryParamName';
 import { selectLanguage } from '../Navigation/LanguageSelect/languageSlice';
-import {
-  first, previous, page, ofPage, next, last,
-} from '../languages';
+import { first, previous, page, ofPage, next, last } from '../languages';
 
-export function Pager() {
+function Pager() {
   const location = useLocation();
   const atMovies = !!location.pathname.includes('movies');
   const currentPage = +useQueryParameter(pageParam) || 1;
@@ -52,46 +53,26 @@ export function Pager() {
 
   return (
     <PagerWrapper>
-      <PagerButton
-        onClick={onFirstButtonClick}
-        disabled={disablePrevious}
-      >
+      <PagerButton onClick={onFirstButtonClick} disabled={disablePrevious}>
         <PagerPrev src={disablePrevious ? DisabledPrev : Prev} />
         <PagerText>{first[language]}</PagerText>
         <MobilePagerPrev src={disablePrevious ? DisabledPrev : Prev} />
       </PagerButton>
-      <PagerButton
-        onClick={onPreviousButtonClick}
-        disabled={disablePrevious}
-      >
+      <PagerButton onClick={onPreviousButtonClick} disabled={disablePrevious}>
         <PagerPrev src={disablePrevious ? DisabledPrev : Prev} />
         <PagerText>{previous[language]}</PagerText>
       </PagerButton>
       <PagerInfo>
         {page[language]}
-        <Bold>
-          {' '}
-          {currentPage}
-          {' '}
-        </Bold>
+        <Bold>{currentPage}</Bold>
         {ofPage[language]}
-        <Bold>
-          {' '}
-          {allPages}
-          {' '}
-        </Bold>
+        <Bold>{allPages}</Bold>
       </PagerInfo>
-      <PagerButton
-        onClick={onNextButtonClick}
-        disabled={disableNext}
-      >
+      <PagerButton onClick={onNextButtonClick} disabled={disableNext}>
         <PagerText>{next[language]}</PagerText>
         <PagerNext src={disableNext ? DisabledNext : Next} />
       </PagerButton>
-      <PagerButton
-        onClick={onLastButtonClick}
-        disabled={disableNext}
-      >
+      <PagerButton onClick={onLastButtonClick} disabled={disableNext}>
         <PagerText>{last[language]}</PagerText>
         <MobilePagerNext src={disableNext ? DisabledNext : Next} />
         <PagerNext src={disableNext ? DisabledNext : Next} />
@@ -99,3 +80,5 @@ export function Pager() {
     </PagerWrapper>
   );
 }
+
+export default Pager;

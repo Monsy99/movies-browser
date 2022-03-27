@@ -2,7 +2,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 export const useQueryParameter = (searchQueryParamName) => {
   const location = useLocation();
-  return (new URLSearchParams(location.search)).get(searchQueryParamName);
+  return new URLSearchParams(location.search).get(searchQueryParamName);
 };
 
 export const useReplaceQueryParameter = (restartQueries = false) => {
@@ -17,9 +17,16 @@ export const useReplaceQueryParameter = (restartQueries = false) => {
       searchParams.delete(key);
     }
     if (restartQueries && searchParams.get(key)) {
-      navigate(`${location.pathname}?${key}=${searchParams.get(key).toString()}`);
+      navigate(
+        `${location.pathname}?${key}=${searchParams.get(key).toString()}`,
+      );
     } else {
-      searchParams ? navigate(`${location.pathname}?${searchParams.toString()}`) : navigate(`${location.pathname}`);
+      // eslint-disable-next-line no-lonely-if
+      if (searchParams) {
+        navigate(`${location.pathname}?${searchParams.toString()}`);
+      } else {
+        navigate(`${location.pathname}`);
+      }
     }
   };
 };

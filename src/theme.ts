@@ -1,3 +1,5 @@
+import baseStyled, { ThemedBaseStyledInterface } from 'styled-components';
+
 const breakpoint = {
   miniMobile: 575.98,
   mobileMax: 767.98,
@@ -48,7 +50,8 @@ export const theme = {
   },
   basicColor,
   breakpoint,
-};
+} as const;
+
 export const darkTheme = {
   navBar: {
     color: {
@@ -78,4 +81,9 @@ export const darkTheme = {
   },
   basicColor,
   breakpoint,
-};
+} as const;
+
+export type ThemeType = typeof theme;
+export type DarkThemeType = typeof darkTheme;
+
+export const styled = baseStyled as ThemedBaseStyledInterface<ThemeType>;
