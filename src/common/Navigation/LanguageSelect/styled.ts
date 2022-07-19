@@ -1,4 +1,5 @@
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
+import { styled } from '@/theme';
 
 export const Select = styled.select`
   height: 50px;
@@ -11,7 +12,7 @@ export const Select = styled.select`
   line-height: 150%;
 `;
 
-export const SelectContainer = styled.div`
+export const SelectContainer = styled.div<{ mobile: boolean }>`
   height: 50px;
   padding: 0 24px;
   background-color: ${({ theme }) => theme.basicColor.white};
@@ -19,8 +20,9 @@ export const SelectContainer = styled.div`
   border-radius: 33px;
   align-self: center;
 
-  ${({ mobile }) => mobile
-    && css`
+  ${({ mobile }) =>
+    mobile &&
+    css`
       @media (min-width: ${({ theme }) => theme.breakpoint.ipad}px) {
         display: none;
       } ;

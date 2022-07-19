@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from '@/types';
 
 const languageSlice = createSlice({
   name: 'language',
@@ -12,8 +13,8 @@ const languageSlice = createSlice({
   },
 });
 
-const selectLanguageState = (state) => state.language;
-export const selectLanguage = (state) => selectLanguageState(state).language;
+const selectLanguageState = (state: RootState) => state.language;
+export const selectLanguage = (state: RootState) => selectLanguageState(state).language;
 
 export const { setLanguage } = languageSlice.actions;
 

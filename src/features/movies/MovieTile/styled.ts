@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-const MovieTileImg = styled.div`
+const MovieTileImg = styled.div<{ url: string }>`
   padding-top: calc(100% * 632 / 421);
   width: 100%;
-  background-image: url("${({ url }) => url}");
+  background-image: url('${({ url }) => url}');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

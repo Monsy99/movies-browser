@@ -16,7 +16,6 @@ import {
   selectMovies,
   selectTotalNumberOfMovies,
 } from '../moviesSlice';
-import { Movie } from '@/types';
 
 function MoviesPage() {
   const query = useQueryParameter(searchQueryParamName);
@@ -24,12 +23,12 @@ function MoviesPage() {
   const currentPage = useQueryParameter(pageQueryParamName);
   const language = useSelector(selectLanguage);
   const loading = useSelector(selectLoading);
-  const movies: Movie[] = useSelector(selectMovies);
+  const movies = useSelector(selectMovies);
   const totalNumberOfMovies = useSelector(selectTotalNumberOfMovies);
   const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(fetchMovies({ page: currentPage, query, language }));
+    dispatch(fetchMovies({ page: currentPage || '1', query, language }));
   }, [dispatch, currentPage, query, language]);
 
   if (error) {

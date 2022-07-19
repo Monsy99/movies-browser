@@ -12,7 +12,8 @@ const moviesSlice = createSlice({
     error: false,
   },
   reducers: {
-    fetchMovies: (state) => {
+    // eslint-disable-next-line no-unused-vars
+    fetchMovies: (state, _: { payload: { page: string; query: string; language: string } }) => {
       state.error = false;
       state.loading = true;
       state.movies = [];

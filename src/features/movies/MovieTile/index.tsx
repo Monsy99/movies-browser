@@ -9,7 +9,6 @@ import {
   MovieTileHeader,
   MovieTileYear,
   MovieTileTags,
-  MovieTileTag,
   MovieAdditionalInfo,
   MovieRatingImg,
   MovieRatingText,
@@ -20,17 +19,7 @@ import { toMovie } from '../../../routes';
 import { votes } from '../../../common/languages';
 import { selectLanguage } from '../../../common/Navigation/LanguageSelect/languageSlice';
 import { selectGenres } from '../../genres/genresSlice';
-import getGenreName from '../../genres/getGenreName';
-
-const generateTags = (tagIds, genres) => {
-  if (tagIds && genres) {
-    const tags = tagIds.map((tagId) => getGenreName(tagId, genres));
-    return tags.map((tag) => (
-      <MovieTileTag key={`${tag.id}`}>{tag}</MovieTileTag>
-    ));
-  }
-  return null;
-};
+import { generateTags } from './helpers';
 
 function MovieTile({ movie }) {
   const language = useSelector(selectLanguage);
@@ -38,11 +27,7 @@ function MovieTile({ movie }) {
   return (
     <Tile as={Link} to={toMovie({ id: movie.id })}>
       <MovieTileImg
-        url={
-          movie.poster_path
-            ? `https://image.tmdb.org/t/p/w400${movie.poster_path}`
-            : Poster
-        }
+        url={movie.poster_path ? `https://image.tmdb.org/t/p/w400${movie.poster_path}` : Poster}
       />
       <MovieInfoWrapper>
         <MovieTileHeader>{movie.title}</MovieTileHeader>

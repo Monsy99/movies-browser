@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { Link, NavLink } from 'react-router-dom';
+import { styled } from '@/theme';
 
 const activeclassname = 'link-active';
 
@@ -74,7 +74,7 @@ export const ToggleButton = styled.button`
   }
 `;
 
-export const SunIcon = styled(Icon)`
+export const SunIcon = styled(Icon)<{ isDark: boolean }>`
   transition: all 0.3s linear;
   height: 30px;
   transform: ${({ isDark }) => (isDark ? 'translateX(-100px)' : 'translateX(0)')};
@@ -83,7 +83,7 @@ export const SunIcon = styled(Icon)`
   }
 `;
 
-export const MoonIcon = styled(Icon)`
+export const MoonIcon = styled(Icon)<{ isDark: boolean }>`
   transition: all 0.3s linear;
   height: 30px;
   transform: ${({ isDark }) => (isDark ? 'translateX(0px)' : 'translateX(100px)')};

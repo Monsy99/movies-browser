@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { languages } from '../../languages';
 import { selectLanguage, setLanguage } from './languageSlice';
@@ -7,9 +7,9 @@ import { Select, SelectContainer } from './styled';
 function LanguageSelect({ handleClose, mobile }) {
   const dispatch = useDispatch();
   const language = useSelector(selectLanguage);
-  const handleChange = ({ target }) => {
+  const handleChange = ({ currentTarget: { value } }: ChangeEvent<HTMLSelectElement>) => {
     handleClose();
-    dispatch(setLanguage(target.value));
+    dispatch(setLanguage(value));
   };
 
   return (
